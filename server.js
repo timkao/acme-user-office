@@ -17,17 +17,17 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use('/users', require('./routes/users'))
 app.use('/offices', require('./routes/offices'))
 
-// let config = process.env;
-// try {
-//   config = require('./env.json');
-// }
-// catch(ex){
+let config = process.env;
+try {
+  config = require('./env.json');
+}
+catch(ex){
 
-// }
-// app.use(function(req, res, next){
-//   res.locals.GOOGLE_API_KEY = config.GOOGLE_API_KEY;
-//   next();
-// });
+}
+app.use(function(req, res, next){
+  res.locals.GOOGLE_API_KEY = config.GOOGLE_API_KEY;
+  next();
+});
 
 app.get('/', (req, res, next) => {
   res.render('index')
