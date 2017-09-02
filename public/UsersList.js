@@ -23,6 +23,20 @@ function usersList(config) {
     return memo
   }, '')
 
+
+  $(container).on('click', 'button', function(){
+    config.removeUser($(this).data())
+  })
+
+  $(container).on('change', 'select', function(){
+    var $this = $(this)
+    config.updateUser({
+      id: $this.data().userId,
+      name: $this.children('option:selected').text()
+    })
+  })
+
+
   $(container + ' ul').append(html)
   config.users.forEach(function(user){
     if (user.office) {

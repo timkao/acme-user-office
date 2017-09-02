@@ -15,7 +15,9 @@ function userForm(config) {
 
   $container.on('click', 'button', function(){
     console.log('save is working')
-    // add users code below
+    config.addUser({
+      name: $(container + ' input').val()
+    })
   })
 
   $container.append(html)

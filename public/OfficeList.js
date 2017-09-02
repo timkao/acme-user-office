@@ -5,7 +5,7 @@ function officeList(config) {
     var temp = `
       <li class="list-group-item">${office.name}<br>
         <em>lat:</em>${office.lat}<br>
-        <em>lat:</em>${office.lng}<br>
+        <em>lng:</em>${office.lng}<br>
         <p><label class="label label-default">${office.users.length} User</label></p>
         <button class="btn btn-warning pull-right" data-id=${office.id}>Delete</button>
         <br clear="all">
@@ -14,6 +14,12 @@ function officeList(config) {
     memo = memo + temp;
     return memo
   }, '')
+
+  $(container).on('click', 'button', function(){
+    config.removeOffice({
+      id: $(this).data().id
+    })
+  })
 
   $(container + ' ul').append(html)
 
